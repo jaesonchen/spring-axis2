@@ -7,7 +7,7 @@
 package com.asiainfo.axis2.client.stub;
 
 public class HelloServiceUnsupportedEncodingExceptionException extends java.lang.Exception {
-    private static final long serialVersionUID = 1496138156197L;
+    private static final long serialVersionUID = 1521615481055L;
     private com.asiainfo.axis2.client.stub.HelloServiceStub.HelloServiceUnsupportedEncodingException faultMessage;
 
     public HelloServiceUnsupportedEncodingExceptionException() {

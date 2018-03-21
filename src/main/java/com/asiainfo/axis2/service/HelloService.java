@@ -43,6 +43,7 @@ public class HelloService {
 		list.add("cp");
 		String[] array = new String[] {"123", "345"};
 		Map<String, String> map = new HashMap<String, String>();
+		map.put("k1", "v1");
 		return new User(username, 18, list, array, map);
 	}
 	

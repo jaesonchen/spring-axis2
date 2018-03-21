@@ -6,7 +6,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
 /**
- * @Description: TODO
+ * Session处理
  * 
  * @author       zq
  * @date         2017年5月30日  下午9:56:53

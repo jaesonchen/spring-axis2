@@ -13,11 +13,26 @@
     	<operation name="hello">
         	<messageReceiver class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
     	</operation>
+    	<messageReceivers>
+            <messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out" class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+            <messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only" class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
+        </messageReceivers>
 	</service> -->
-<!-- 		<messageReceivers>
-			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out" class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
-			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only" class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
-		</messageReceivers> -->
+
+	<!-- 自定义报文格式参数 OMElement -->
+    <service name="xmlService" targetNamespace="http://service.axis2.asiainfo.com">
+        <schema schemaNamespace="http://model.axis2.asiainfo.com"/>
+        <description>Web Service</description>
+        <parameter name="SpringBeanName">rawXMLService</parameter>
+        <parameter name="ServiceObjectSupplier">org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier</parameter>
+        <operation name="feedback">
+            <messageReceiver class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+        </operation>
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out" class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+        </messageReceivers>
+    </service>
+
 	<!-- application、soapsession、transportsession、request，其中request为scope属性的默认值 -->
 	<service name="loginService" scope="application">
 		<description>Web Service</description>

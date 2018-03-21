@@ -52,6 +52,8 @@ public class HelloServiceStub extends org.apache.axis2.client.Stub {
         //Set the soap version
         _serviceClient.getOptions()
                       .setSoapVersionURI(org.apache.axiom.soap.SOAP12Constants.SOAP_ENVELOPE_NAMESPACE_URI);
+        //设置soap1.1
+        //_serviceClient.getOptions().setSoapVersionURI(org.apache.axiom.soap.SOAP11Constants.SOAP_ENVELOPE_NAMESPACE_URI);
     }
 
     /**
@@ -158,44 +160,44 @@ public class HelloServiceStub extends org.apache.axis2.client.Stub {
                 new javax.xml.namespace.QName(
                     "http://service.axis2.asiainfo.com",
                     "helloServiceUnsupportedEncodingException"), "byteToString"),
-            "com.asiainfo.axis2.client.HelloServiceUnsupportedEncodingExceptionException");
+            "com.asiainfo.axis2.client.stub.HelloServiceUnsupportedEncodingExceptionException");
         faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
                 new javax.xml.namespace.QName(
                     "http://service.axis2.asiainfo.com",
                     "helloServiceUnsupportedEncodingException"), "byteToString"),
-            "com.asiainfo.axis2.client.HelloServiceUnsupportedEncodingExceptionException");
+            "com.asiainfo.axis2.client.stub.HelloServiceUnsupportedEncodingExceptionException");
         faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
                 new javax.xml.namespace.QName(
                     "http://service.axis2.asiainfo.com",
                     "helloServiceUnsupportedEncodingException"), "byteToString"),
-            "com.asiainfo.axis2.client.HelloServiceStub$HelloServiceUnsupportedEncodingException");
+            "com.asiainfo.axis2.client.stub.HelloServiceStub$HelloServiceUnsupportedEncodingException");
 
         faultExceptionNameMap.put(new org.apache.axis2.client.FaultMapKey(
                 new javax.xml.namespace.QName(
                     "http://service.axis2.asiainfo.com",
                     "helloServiceUnsupportedEncodingException"), "getBytes"),
-            "com.asiainfo.axis2.client.HelloServiceUnsupportedEncodingExceptionException");
+            "com.asiainfo.axis2.client.stub.HelloServiceUnsupportedEncodingExceptionException");
         faultExceptionClassNameMap.put(new org.apache.axis2.client.FaultMapKey(
                 new javax.xml.namespace.QName(
                     "http://service.axis2.asiainfo.com",
                     "helloServiceUnsupportedEncodingException"), "getBytes"),
-            "com.asiainfo.axis2.client.HelloServiceUnsupportedEncodingExceptionException");
+            "com.asiainfo.axis2.client.stub.HelloServiceUnsupportedEncodingExceptionException");
         faultMessageMap.put(new org.apache.axis2.client.FaultMapKey(
                 new javax.xml.namespace.QName(
                     "http://service.axis2.asiainfo.com",
                     "helloServiceUnsupportedEncodingException"), "getBytes"),
-            "com.asiainfo.axis2.client.HelloServiceStub$HelloServiceUnsupportedEncodingException");
+            "com.asiainfo.axis2.client.stub.HelloServiceStub$HelloServiceUnsupportedEncodingException");
     }
 
     /**
      * Auto generated method signature
      *
-     * @see com.asiainfo.axis2.client.HelloService#byteToString
-     * @param byteToString1
+     * @see com.asiainfo.axis2.client.stub.HelloService#byteToString
+     * @param byteToString
      * @throws com.asiainfo.axis2.client.stub.HelloServiceUnsupportedEncodingExceptionException :
      */
     public com.asiainfo.axis2.client.stub.HelloServiceStub.ByteToStringResponse byteToString(
-        com.asiainfo.axis2.client.stub.HelloServiceStub.ByteToString byteToString1)
+        com.asiainfo.axis2.client.stub.HelloServiceStub.ByteToString byteToString)
         throws java.rmi.RemoteException,
             com.asiainfo.axis2.client.stub.HelloServiceUnsupportedEncodingExceptionException {
         org.apache.axis2.context.MessageContext _messageContext = null;
@@ -217,7 +219,7 @@ public class HelloServiceStub extends org.apache.axis2.client.Stub {
 
             env = toEnvelope(getFactory(_operationClient.getOptions()
                                                         .getSoapVersionURI()),
-                    byteToString1,
+                    byteToString,
                     optimizeContent(
                         new javax.xml.namespace.QName(
                             "http://service.axis2.asiainfo.com", "byteToString")),
@@ -307,167 +309,13 @@ public class HelloServiceStub extends org.apache.axis2.client.Stub {
     }
 
     /**
-     * Auto generated method signature for Asynchronous Invocations
-     *
-     * @see com.asiainfo.axis2.client.HelloService#startbyteToString
-     * @param byteToString1
-     */
-    public void startbyteToString(
-        com.asiainfo.axis2.client.stub.HelloServiceStub.ByteToString byteToString1,
-        final com.asiainfo.axis2.client.stub.HelloServiceCallbackHandler callback)
-        throws java.rmi.RemoteException {
-        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[0].getName());
-        _operationClient.getOptions().setAction("urn:byteToString");
-        _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
-
-        addPropertyToOperationClient(_operationClient,
-            org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,
-            "&");
-
-        // create SOAP envelope with that payload
-        org.apache.axiom.soap.SOAPEnvelope env = null;
-        final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
-
-        //Style is Doc.
-        env = toEnvelope(getFactory(_operationClient.getOptions()
-                                                    .getSoapVersionURI()),
-                byteToString1,
-                optimizeContent(
-                    new javax.xml.namespace.QName(
-                        "http://service.axis2.asiainfo.com", "byteToString")),
-                new javax.xml.namespace.QName(
-                    "http://service.axis2.asiainfo.com", "byteToString"));
-
-        // adding SOAP soap_headers
-        _serviceClient.addHeadersToEnvelope(env);
-        // create message context with that soap envelope
-        _messageContext.setEnvelope(env);
-
-        // add the message context to the operation client
-        _operationClient.addMessageContext(_messageContext);
-
-        _operationClient.setCallback(new org.apache.axis2.client.async.AxisCallback() {
-                public void onMessage(
-                    org.apache.axis2.context.MessageContext resultContext) {
-                    try {
-                        org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
-
-                        java.lang.Object object = fromOM(resultEnv.getBody()
-                                                                  .getFirstElement(),
-                                com.asiainfo.axis2.client.stub.HelloServiceStub.ByteToStringResponse.class);
-                        callback.receiveResultbyteToString((com.asiainfo.axis2.client.stub.HelloServiceStub.ByteToStringResponse) object);
-                    } catch (org.apache.axis2.AxisFault e) {
-                        callback.receiveErrorbyteToString(e);
-                    }
-                }
-
-                public void onError(java.lang.Exception error) {
-                    if (error instanceof org.apache.axis2.AxisFault) {
-                        org.apache.axis2.AxisFault f = (org.apache.axis2.AxisFault) error;
-                        org.apache.axiom.om.OMElement faultElt = f.getDetail();
-
-                        if (faultElt != null) {
-                            if (faultExceptionNameMap.containsKey(
-                                        new org.apache.axis2.client.FaultMapKey(
-                                            faultElt.getQName(), "byteToString"))) {
-                                //make the fault by reflection
-                                try {
-                                    java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(
-                                                faultElt.getQName(),
-                                                "byteToString"));
-                                    java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
-                                    java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
-                                    java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
-
-                                    //message class
-                                    java.lang.String messageClassName = (java.lang.String) faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(
-                                                faultElt.getQName(),
-                                                "byteToString"));
-                                    java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
-                                    java.lang.Object messageObject = fromOM(faultElt,
-                                            messageClass);
-                                    java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
-                                            new java.lang.Class[] { messageClass });
-                                    m.invoke(ex,
-                                        new java.lang.Object[] { messageObject });
-
-                                    if (ex instanceof com.asiainfo.axis2.client.stub.HelloServiceUnsupportedEncodingExceptionException) {
-                                        callback.receiveErrorbyteToString((com.asiainfo.axis2.client.stub.HelloServiceUnsupportedEncodingExceptionException) ex);
-
-                                        return;
-                                    }
-
-                                    callback.receiveErrorbyteToString(new java.rmi.RemoteException(
-                                            ex.getMessage(), ex));
-                                } catch (java.lang.ClassCastException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorbyteToString(f);
-                                } catch (java.lang.ClassNotFoundException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorbyteToString(f);
-                                } catch (java.lang.NoSuchMethodException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorbyteToString(f);
-                                } catch (java.lang.reflect.InvocationTargetException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorbyteToString(f);
-                                } catch (java.lang.IllegalAccessException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorbyteToString(f);
-                                } catch (java.lang.InstantiationException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorbyteToString(f);
-                                } catch (org.apache.axis2.AxisFault e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorbyteToString(f);
-                                }
-                            } else {
-                                callback.receiveErrorbyteToString(f);
-                            }
-                        } else {
-                            callback.receiveErrorbyteToString(f);
-                        }
-                    } else {
-                        callback.receiveErrorbyteToString(error);
-                    }
-                }
-
-                public void onFault(
-                    org.apache.axis2.context.MessageContext faultContext) {
-                    org.apache.axis2.AxisFault fault = org.apache.axis2.util.Utils.getInboundFaultFromMessageContext(faultContext);
-                    onError(fault);
-                }
-
-                public void onComplete() {
-                    try {
-                        _messageContext.getTransportOut().getSender()
-                                       .cleanup(_messageContext);
-                    } catch (org.apache.axis2.AxisFault axisFault) {
-                        callback.receiveErrorbyteToString(axisFault);
-                    }
-                }
-            });
-
-        org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-
-        if ((_operations[0].getMessageReceiver() == null) &&
-                _operationClient.getOptions().isUseSeparateListener()) {
-            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-            _operations[0].setMessageReceiver(_callbackReceiver);
-        }
-
-        //execute the operation client
-        _operationClient.execute(false);
-    }
-
-    /**
      * Auto generated method signature
      *
-     * @see com.asiainfo.axis2.client.HelloService#greeting
-     * @param greeting3
+     * @see com.asiainfo.axis2.client.stub.HelloService#greeting
+     * @param greeting
      */
     public com.asiainfo.axis2.client.stub.HelloServiceStub.GreetingResponse greeting(
-        com.asiainfo.axis2.client.stub.HelloServiceStub.Greeting greeting3)
+        com.asiainfo.axis2.client.stub.HelloServiceStub.Greeting greeting)
         throws java.rmi.RemoteException {
         org.apache.axis2.context.MessageContext _messageContext = null;
 
@@ -488,7 +336,7 @@ public class HelloServiceStub extends org.apache.axis2.client.Stub {
 
             env = toEnvelope(getFactory(_operationClient.getOptions()
                                                         .getSoapVersionURI()),
-                    greeting3,
+                    greeting,
                     optimizeContent(
                         new javax.xml.namespace.QName(
                             "http://service.axis2.asiainfo.com", "greeting")),
@@ -574,159 +422,13 @@ public class HelloServiceStub extends org.apache.axis2.client.Stub {
     }
 
     /**
-     * Auto generated method signature for Asynchronous Invocations
-     *
-     * @see com.asiainfo.axis2.client.HelloService#startgreeting
-     * @param greeting3
-     */
-    public void startgreeting(
-        com.asiainfo.axis2.client.stub.HelloServiceStub.Greeting greeting3,
-        final com.asiainfo.axis2.client.stub.HelloServiceCallbackHandler callback)
-        throws java.rmi.RemoteException {
-        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[1].getName());
-        _operationClient.getOptions().setAction("urn:greeting");
-        _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
-
-        addPropertyToOperationClient(_operationClient,
-            org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,
-            "&");
-
-        // create SOAP envelope with that payload
-        org.apache.axiom.soap.SOAPEnvelope env = null;
-        final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
-
-        //Style is Doc.
-        env = toEnvelope(getFactory(_operationClient.getOptions()
-                                                    .getSoapVersionURI()),
-                greeting3,
-                optimizeContent(
-                    new javax.xml.namespace.QName(
-                        "http://service.axis2.asiainfo.com", "greeting")),
-                new javax.xml.namespace.QName(
-                    "http://service.axis2.asiainfo.com", "greeting"));
-
-        // adding SOAP soap_headers
-        _serviceClient.addHeadersToEnvelope(env);
-        // create message context with that soap envelope
-        _messageContext.setEnvelope(env);
-
-        // add the message context to the operation client
-        _operationClient.addMessageContext(_messageContext);
-
-        _operationClient.setCallback(new org.apache.axis2.client.async.AxisCallback() {
-                public void onMessage(
-                    org.apache.axis2.context.MessageContext resultContext) {
-                    try {
-                        org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
-
-                        java.lang.Object object = fromOM(resultEnv.getBody()
-                                                                  .getFirstElement(),
-                                com.asiainfo.axis2.client.stub.HelloServiceStub.GreetingResponse.class);
-                        callback.receiveResultgreeting((com.asiainfo.axis2.client.stub.HelloServiceStub.GreetingResponse) object);
-                    } catch (org.apache.axis2.AxisFault e) {
-                        callback.receiveErrorgreeting(e);
-                    }
-                }
-
-                public void onError(java.lang.Exception error) {
-                    if (error instanceof org.apache.axis2.AxisFault) {
-                        org.apache.axis2.AxisFault f = (org.apache.axis2.AxisFault) error;
-                        org.apache.axiom.om.OMElement faultElt = f.getDetail();
-
-                        if (faultElt != null) {
-                            if (faultExceptionNameMap.containsKey(
-                                        new org.apache.axis2.client.FaultMapKey(
-                                            faultElt.getQName(), "greeting"))) {
-                                //make the fault by reflection
-                                try {
-                                    java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(
-                                                faultElt.getQName(), "greeting"));
-                                    java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
-                                    java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
-                                    java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
-
-                                    //message class
-                                    java.lang.String messageClassName = (java.lang.String) faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(
-                                                faultElt.getQName(), "greeting"));
-                                    java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
-                                    java.lang.Object messageObject = fromOM(faultElt,
-                                            messageClass);
-                                    java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
-                                            new java.lang.Class[] { messageClass });
-                                    m.invoke(ex,
-                                        new java.lang.Object[] { messageObject });
-
-                                    callback.receiveErrorgreeting(new java.rmi.RemoteException(
-                                            ex.getMessage(), ex));
-                                } catch (java.lang.ClassCastException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgreeting(f);
-                                } catch (java.lang.ClassNotFoundException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgreeting(f);
-                                } catch (java.lang.NoSuchMethodException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgreeting(f);
-                                } catch (java.lang.reflect.InvocationTargetException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgreeting(f);
-                                } catch (java.lang.IllegalAccessException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgreeting(f);
-                                } catch (java.lang.InstantiationException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgreeting(f);
-                                } catch (org.apache.axis2.AxisFault e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgreeting(f);
-                                }
-                            } else {
-                                callback.receiveErrorgreeting(f);
-                            }
-                        } else {
-                            callback.receiveErrorgreeting(f);
-                        }
-                    } else {
-                        callback.receiveErrorgreeting(error);
-                    }
-                }
-
-                public void onFault(
-                    org.apache.axis2.context.MessageContext faultContext) {
-                    org.apache.axis2.AxisFault fault = org.apache.axis2.util.Utils.getInboundFaultFromMessageContext(faultContext);
-                    onError(fault);
-                }
-
-                public void onComplete() {
-                    try {
-                        _messageContext.getTransportOut().getSender()
-                                       .cleanup(_messageContext);
-                    } catch (org.apache.axis2.AxisFault axisFault) {
-                        callback.receiveErrorgreeting(axisFault);
-                    }
-                }
-            });
-
-        org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-
-        if ((_operations[1].getMessageReceiver() == null) &&
-                _operationClient.getOptions().isUseSeparateListener()) {
-            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-            _operations[1].setMessageReceiver(_callbackReceiver);
-        }
-
-        //execute the operation client
-        _operationClient.execute(false);
-    }
-
-    /**
      * Auto generated method signature
      *
-     * @see com.asiainfo.axis2.client.HelloService#getUser
-     * @param getUser5
+     * @see com.asiainfo.axis2.client.stub.HelloService#getUser
+     * @param getUser
      */
     public com.asiainfo.axis2.client.stub.HelloServiceStub.GetUserResponse getUser(
-        com.asiainfo.axis2.client.stub.HelloServiceStub.GetUser getUser5)
+        com.asiainfo.axis2.client.stub.HelloServiceStub.GetUser getUser)
         throws java.rmi.RemoteException {
         org.apache.axis2.context.MessageContext _messageContext = null;
 
@@ -747,7 +449,7 @@ public class HelloServiceStub extends org.apache.axis2.client.Stub {
 
             env = toEnvelope(getFactory(_operationClient.getOptions()
                                                         .getSoapVersionURI()),
-                    getUser5,
+                    getUser,
                     optimizeContent(
                         new javax.xml.namespace.QName(
                             "http://service.axis2.asiainfo.com", "getUser")),
@@ -833,158 +535,13 @@ public class HelloServiceStub extends org.apache.axis2.client.Stub {
     }
 
     /**
-     * Auto generated method signature for Asynchronous Invocations
-     *
-     * @see com.asiainfo.axis2.client.HelloService#startgetUser
-     * @param getUser5
-     */
-    public void startgetUser(
-        com.asiainfo.axis2.client.stub.HelloServiceStub.GetUser getUser5,
-        final com.asiainfo.axis2.client.stub.HelloServiceCallbackHandler callback)
-        throws java.rmi.RemoteException {
-        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[2].getName());
-        _operationClient.getOptions().setAction("urn:getUser");
-        _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
-
-        addPropertyToOperationClient(_operationClient,
-            org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,
-            "&");
-
-        // create SOAP envelope with that payload
-        org.apache.axiom.soap.SOAPEnvelope env = null;
-        final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
-
-        //Style is Doc.
-        env = toEnvelope(getFactory(_operationClient.getOptions()
-                                                    .getSoapVersionURI()),
-                getUser5,
-                optimizeContent(
-                    new javax.xml.namespace.QName(
-                        "http://service.axis2.asiainfo.com", "getUser")),
-                new javax.xml.namespace.QName(
-                    "http://service.axis2.asiainfo.com", "getUser"));
-
-        // adding SOAP soap_headers
-        _serviceClient.addHeadersToEnvelope(env);
-        // create message context with that soap envelope
-        _messageContext.setEnvelope(env);
-
-        // add the message context to the operation client
-        _operationClient.addMessageContext(_messageContext);
-
-        _operationClient.setCallback(new org.apache.axis2.client.async.AxisCallback() {
-                public void onMessage(
-                    org.apache.axis2.context.MessageContext resultContext) {
-                    try {
-                        org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
-
-                        java.lang.Object object = fromOM(resultEnv.getBody()
-                                                                  .getFirstElement(),
-                                com.asiainfo.axis2.client.stub.HelloServiceStub.GetUserResponse.class);
-                        callback.receiveResultgetUser((com.asiainfo.axis2.client.stub.HelloServiceStub.GetUserResponse) object);
-                    } catch (org.apache.axis2.AxisFault e) {
-                        callback.receiveErrorgetUser(e);
-                    }
-                }
-
-                public void onError(java.lang.Exception error) {
-                    if (error instanceof org.apache.axis2.AxisFault) {
-                        org.apache.axis2.AxisFault f = (org.apache.axis2.AxisFault) error;
-                        org.apache.axiom.om.OMElement faultElt = f.getDetail();
-
-                        if (faultElt != null) {
-                            if (faultExceptionNameMap.containsKey(
-                                        new org.apache.axis2.client.FaultMapKey(
-                                            faultElt.getQName(), "getUser"))) {
-                                //make the fault by reflection
-                                try {
-                                    java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(
-                                                faultElt.getQName(), "getUser"));
-                                    java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
-                                    java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
-                                    java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
-
-                                    //message class
-                                    java.lang.String messageClassName = (java.lang.String) faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(
-                                                faultElt.getQName(), "getUser"));
-                                    java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
-                                    java.lang.Object messageObject = fromOM(faultElt,
-                                            messageClass);
-                                    java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
-                                            new java.lang.Class[] { messageClass });
-                                    m.invoke(ex,
-                                        new java.lang.Object[] { messageObject });
-
-                                    callback.receiveErrorgetUser(new java.rmi.RemoteException(
-                                            ex.getMessage(), ex));
-                                } catch (java.lang.ClassCastException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgetUser(f);
-                                } catch (java.lang.ClassNotFoundException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgetUser(f);
-                                } catch (java.lang.NoSuchMethodException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgetUser(f);
-                                } catch (java.lang.reflect.InvocationTargetException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgetUser(f);
-                                } catch (java.lang.IllegalAccessException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgetUser(f);
-                                } catch (java.lang.InstantiationException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgetUser(f);
-                                } catch (org.apache.axis2.AxisFault e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgetUser(f);
-                                }
-                            } else {
-                                callback.receiveErrorgetUser(f);
-                            }
-                        } else {
-                            callback.receiveErrorgetUser(f);
-                        }
-                    } else {
-                        callback.receiveErrorgetUser(error);
-                    }
-                }
-
-                public void onFault(
-                    org.apache.axis2.context.MessageContext faultContext) {
-                    org.apache.axis2.AxisFault fault = org.apache.axis2.util.Utils.getInboundFaultFromMessageContext(faultContext);
-                    onError(fault);
-                }
-
-                public void onComplete() {
-                    try {
-                        _messageContext.getTransportOut().getSender()
-                                       .cleanup(_messageContext);
-                    } catch (org.apache.axis2.AxisFault axisFault) {
-                        callback.receiveErrorgetUser(axisFault);
-                    }
-                }
-            });
-
-        org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-
-        if ((_operations[2].getMessageReceiver() == null) &&
-                _operationClient.getOptions().isUseSeparateListener()) {
-            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-            _operations[2].setMessageReceiver(_callbackReceiver);
-        }
-
-        //execute the operation client
-        _operationClient.execute(false);
-    }
-
-    /**
      * Auto generated method signature
      *
-     * @see com.asiainfo.axis2.client.HelloService#hello
-     * @param hello7
+     * @see com.asiainfo.axis2.client.stub.HelloService#hello
+     * @param hello
      */
-    public void hello(com.asiainfo.axis2.client.stub.HelloServiceStub.Hello hello7)
+    public void hello(
+        com.asiainfo.axis2.client.stub.HelloServiceStub.Hello hello)
         throws java.rmi.RemoteException {
         org.apache.axis2.context.MessageContext _messageContext = null;
 
@@ -1005,7 +562,7 @@ public class HelloServiceStub extends org.apache.axis2.client.Stub {
 
             env = toEnvelope(getFactory(_operationClient.getOptions()
                                                         .getSoapVersionURI()),
-                    hello7,
+                    hello,
                     optimizeContent(
                         new javax.xml.namespace.QName(
                             "http://service.axis2.asiainfo.com", "hello")),
@@ -1084,67 +641,14 @@ public class HelloServiceStub extends org.apache.axis2.client.Stub {
     }
 
     /**
-     * Auto generated method signature for Asynchronous Invocations
-     *
-     * @see com.asiainfo.axis2.client.HelloService#starthello
-     * @param hello7
-     */
-    public void starthello(
-        com.asiainfo.axis2.client.stub.HelloServiceStub.Hello hello7,
-        final com.asiainfo.axis2.client.stub.HelloServiceCallbackHandler callback)
-        throws java.rmi.RemoteException {
-        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[3].getName());
-        _operationClient.getOptions().setAction("urn:hello");
-        _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
-
-        addPropertyToOperationClient(_operationClient,
-            org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,
-            "&");
-
-        // create SOAP envelope with that payload
-        org.apache.axiom.soap.SOAPEnvelope env = null;
-        final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
-
-        //Style is Doc.
-        env = toEnvelope(getFactory(_operationClient.getOptions()
-                                                    .getSoapVersionURI()),
-                hello7,
-                optimizeContent(
-                    new javax.xml.namespace.QName(
-                        "http://service.axis2.asiainfo.com", "hello")),
-                new javax.xml.namespace.QName(
-                    "http://service.axis2.asiainfo.com", "hello"));
-
-        // adding SOAP soap_headers
-        _serviceClient.addHeadersToEnvelope(env);
-        // create message context with that soap envelope
-        _messageContext.setEnvelope(env);
-
-        // add the message context to the operation client
-        _operationClient.addMessageContext(_messageContext);
-
-        // Nothing to pass as the callback!!!
-        org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-
-        if ((_operations[3].getMessageReceiver() == null) &&
-                _operationClient.getOptions().isUseSeparateListener()) {
-            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-            _operations[3].setMessageReceiver(_callbackReceiver);
-        }
-
-        //execute the operation client
-        _operationClient.execute(false);
-    }
-
-    /**
      * Auto generated method signature
      *
-     * @see com.asiainfo.axis2.client.HelloService#getBytes
-     * @param getBytes9
+     * @see com.asiainfo.axis2.client.stub.HelloService#getBytes
+     * @param getBytes
      * @throws com.asiainfo.axis2.client.stub.HelloServiceUnsupportedEncodingExceptionException :
      */
     public com.asiainfo.axis2.client.stub.HelloServiceStub.GetBytesResponse getBytes(
-        com.asiainfo.axis2.client.stub.HelloServiceStub.GetBytes getBytes9)
+        com.asiainfo.axis2.client.stub.HelloServiceStub.GetBytes getBytes)
         throws java.rmi.RemoteException,
             com.asiainfo.axis2.client.stub.HelloServiceUnsupportedEncodingExceptionException {
         org.apache.axis2.context.MessageContext _messageContext = null;
@@ -1166,7 +670,7 @@ public class HelloServiceStub extends org.apache.axis2.client.Stub {
 
             env = toEnvelope(getFactory(_operationClient.getOptions()
                                                         .getSoapVersionURI()),
-                    getBytes9,
+                    getBytes,
                     optimizeContent(
                         new javax.xml.namespace.QName(
                             "http://service.axis2.asiainfo.com", "getBytes")),
@@ -1256,165 +760,13 @@ public class HelloServiceStub extends org.apache.axis2.client.Stub {
     }
 
     /**
-     * Auto generated method signature for Asynchronous Invocations
-     *
-     * @see com.asiainfo.axis2.client.HelloService#startgetBytes
-     * @param getBytes9
-     */
-    public void startgetBytes(
-        com.asiainfo.axis2.client.stub.HelloServiceStub.GetBytes getBytes9,
-        final com.asiainfo.axis2.client.stub.HelloServiceCallbackHandler callback)
-        throws java.rmi.RemoteException {
-        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[4].getName());
-        _operationClient.getOptions().setAction("urn:getBytes");
-        _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
-
-        addPropertyToOperationClient(_operationClient,
-            org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,
-            "&");
-
-        // create SOAP envelope with that payload
-        org.apache.axiom.soap.SOAPEnvelope env = null;
-        final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
-
-        //Style is Doc.
-        env = toEnvelope(getFactory(_operationClient.getOptions()
-                                                    .getSoapVersionURI()),
-                getBytes9,
-                optimizeContent(
-                    new javax.xml.namespace.QName(
-                        "http://service.axis2.asiainfo.com", "getBytes")),
-                new javax.xml.namespace.QName(
-                    "http://service.axis2.asiainfo.com", "getBytes"));
-
-        // adding SOAP soap_headers
-        _serviceClient.addHeadersToEnvelope(env);
-        // create message context with that soap envelope
-        _messageContext.setEnvelope(env);
-
-        // add the message context to the operation client
-        _operationClient.addMessageContext(_messageContext);
-
-        _operationClient.setCallback(new org.apache.axis2.client.async.AxisCallback() {
-                public void onMessage(
-                    org.apache.axis2.context.MessageContext resultContext) {
-                    try {
-                        org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
-
-                        java.lang.Object object = fromOM(resultEnv.getBody()
-                                                                  .getFirstElement(),
-                                com.asiainfo.axis2.client.stub.HelloServiceStub.GetBytesResponse.class);
-                        callback.receiveResultgetBytes((com.asiainfo.axis2.client.stub.HelloServiceStub.GetBytesResponse) object);
-                    } catch (org.apache.axis2.AxisFault e) {
-                        callback.receiveErrorgetBytes(e);
-                    }
-                }
-
-                public void onError(java.lang.Exception error) {
-                    if (error instanceof org.apache.axis2.AxisFault) {
-                        org.apache.axis2.AxisFault f = (org.apache.axis2.AxisFault) error;
-                        org.apache.axiom.om.OMElement faultElt = f.getDetail();
-
-                        if (faultElt != null) {
-                            if (faultExceptionNameMap.containsKey(
-                                        new org.apache.axis2.client.FaultMapKey(
-                                            faultElt.getQName(), "getBytes"))) {
-                                //make the fault by reflection
-                                try {
-                                    java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(
-                                                faultElt.getQName(), "getBytes"));
-                                    java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
-                                    java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
-                                    java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
-
-                                    //message class
-                                    java.lang.String messageClassName = (java.lang.String) faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(
-                                                faultElt.getQName(), "getBytes"));
-                                    java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
-                                    java.lang.Object messageObject = fromOM(faultElt,
-                                            messageClass);
-                                    java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
-                                            new java.lang.Class[] { messageClass });
-                                    m.invoke(ex,
-                                        new java.lang.Object[] { messageObject });
-
-                                    if (ex instanceof com.asiainfo.axis2.client.stub.HelloServiceUnsupportedEncodingExceptionException) {
-                                        callback.receiveErrorgetBytes((com.asiainfo.axis2.client.stub.HelloServiceUnsupportedEncodingExceptionException) ex);
-
-                                        return;
-                                    }
-
-                                    callback.receiveErrorgetBytes(new java.rmi.RemoteException(
-                                            ex.getMessage(), ex));
-                                } catch (java.lang.ClassCastException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgetBytes(f);
-                                } catch (java.lang.ClassNotFoundException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgetBytes(f);
-                                } catch (java.lang.NoSuchMethodException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgetBytes(f);
-                                } catch (java.lang.reflect.InvocationTargetException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgetBytes(f);
-                                } catch (java.lang.IllegalAccessException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgetBytes(f);
-                                } catch (java.lang.InstantiationException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgetBytes(f);
-                                } catch (org.apache.axis2.AxisFault e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorgetBytes(f);
-                                }
-                            } else {
-                                callback.receiveErrorgetBytes(f);
-                            }
-                        } else {
-                            callback.receiveErrorgetBytes(f);
-                        }
-                    } else {
-                        callback.receiveErrorgetBytes(error);
-                    }
-                }
-
-                public void onFault(
-                    org.apache.axis2.context.MessageContext faultContext) {
-                    org.apache.axis2.AxisFault fault = org.apache.axis2.util.Utils.getInboundFaultFromMessageContext(faultContext);
-                    onError(fault);
-                }
-
-                public void onComplete() {
-                    try {
-                        _messageContext.getTransportOut().getSender()
-                                       .cleanup(_messageContext);
-                    } catch (org.apache.axis2.AxisFault axisFault) {
-                        callback.receiveErrorgetBytes(axisFault);
-                    }
-                }
-            });
-
-        org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-
-        if ((_operations[4].getMessageReceiver() == null) &&
-                _operationClient.getOptions().isUseSeparateListener()) {
-            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-            _operations[4].setMessageReceiver(_callbackReceiver);
-        }
-
-        //execute the operation client
-        _operationClient.execute(false);
-    }
-
-    /**
      * Auto generated method signature
      *
-     * @see com.asiainfo.axis2.client.HelloService#saveUser
-     * @param saveUser11
+     * @see com.asiainfo.axis2.client.stub.HelloService#saveUser
+     * @param saveUser
      */
     public com.asiainfo.axis2.client.stub.HelloServiceStub.SaveUserResponse saveUser(
-        com.asiainfo.axis2.client.stub.HelloServiceStub.SaveUser saveUser11)
+        com.asiainfo.axis2.client.stub.HelloServiceStub.SaveUser saveUser)
         throws java.rmi.RemoteException {
         org.apache.axis2.context.MessageContext _messageContext = null;
 
@@ -1435,7 +787,7 @@ public class HelloServiceStub extends org.apache.axis2.client.Stub {
 
             env = toEnvelope(getFactory(_operationClient.getOptions()
                                                         .getSoapVersionURI()),
-                    saveUser11,
+                    saveUser,
                     optimizeContent(
                         new javax.xml.namespace.QName(
                             "http://service.axis2.asiainfo.com", "saveUser")),
@@ -1518,152 +870,6 @@ public class HelloServiceStub extends org.apache.axis2.client.Stub {
                                .cleanup(_messageContext);
             }
         }
-    }
-
-    /**
-     * Auto generated method signature for Asynchronous Invocations
-     *
-     * @see com.asiainfo.axis2.client.HelloService#startsaveUser
-     * @param saveUser11
-     */
-    public void startsaveUser(
-        com.asiainfo.axis2.client.stub.HelloServiceStub.SaveUser saveUser11,
-        final com.asiainfo.axis2.client.stub.HelloServiceCallbackHandler callback)
-        throws java.rmi.RemoteException {
-        org.apache.axis2.client.OperationClient _operationClient = _serviceClient.createClient(_operations[5].getName());
-        _operationClient.getOptions().setAction("urn:saveUser");
-        _operationClient.getOptions().setExceptionToBeThrownOnSOAPFault(true);
-
-        addPropertyToOperationClient(_operationClient,
-            org.apache.axis2.description.WSDL2Constants.ATTR_WHTTP_QUERY_PARAMETER_SEPARATOR,
-            "&");
-
-        // create SOAP envelope with that payload
-        org.apache.axiom.soap.SOAPEnvelope env = null;
-        final org.apache.axis2.context.MessageContext _messageContext = new org.apache.axis2.context.MessageContext();
-
-        //Style is Doc.
-        env = toEnvelope(getFactory(_operationClient.getOptions()
-                                                    .getSoapVersionURI()),
-                saveUser11,
-                optimizeContent(
-                    new javax.xml.namespace.QName(
-                        "http://service.axis2.asiainfo.com", "saveUser")),
-                new javax.xml.namespace.QName(
-                    "http://service.axis2.asiainfo.com", "saveUser"));
-
-        // adding SOAP soap_headers
-        _serviceClient.addHeadersToEnvelope(env);
-        // create message context with that soap envelope
-        _messageContext.setEnvelope(env);
-
-        // add the message context to the operation client
-        _operationClient.addMessageContext(_messageContext);
-
-        _operationClient.setCallback(new org.apache.axis2.client.async.AxisCallback() {
-                public void onMessage(
-                    org.apache.axis2.context.MessageContext resultContext) {
-                    try {
-                        org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
-
-                        java.lang.Object object = fromOM(resultEnv.getBody()
-                                                                  .getFirstElement(),
-                                com.asiainfo.axis2.client.stub.HelloServiceStub.SaveUserResponse.class);
-                        callback.receiveResultsaveUser((com.asiainfo.axis2.client.stub.HelloServiceStub.SaveUserResponse) object);
-                    } catch (org.apache.axis2.AxisFault e) {
-                        callback.receiveErrorsaveUser(e);
-                    }
-                }
-
-                public void onError(java.lang.Exception error) {
-                    if (error instanceof org.apache.axis2.AxisFault) {
-                        org.apache.axis2.AxisFault f = (org.apache.axis2.AxisFault) error;
-                        org.apache.axiom.om.OMElement faultElt = f.getDetail();
-
-                        if (faultElt != null) {
-                            if (faultExceptionNameMap.containsKey(
-                                        new org.apache.axis2.client.FaultMapKey(
-                                            faultElt.getQName(), "saveUser"))) {
-                                //make the fault by reflection
-                                try {
-                                    java.lang.String exceptionClassName = (java.lang.String) faultExceptionClassNameMap.get(new org.apache.axis2.client.FaultMapKey(
-                                                faultElt.getQName(), "saveUser"));
-                                    java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
-                                    java.lang.reflect.Constructor constructor = exceptionClass.getConstructor(java.lang.String.class);
-                                    java.lang.Exception ex = (java.lang.Exception) constructor.newInstance(f.getMessage());
-
-                                    //message class
-                                    java.lang.String messageClassName = (java.lang.String) faultMessageMap.get(new org.apache.axis2.client.FaultMapKey(
-                                                faultElt.getQName(), "saveUser"));
-                                    java.lang.Class messageClass = java.lang.Class.forName(messageClassName);
-                                    java.lang.Object messageObject = fromOM(faultElt,
-                                            messageClass);
-                                    java.lang.reflect.Method m = exceptionClass.getMethod("setFaultMessage",
-                                            new java.lang.Class[] { messageClass });
-                                    m.invoke(ex,
-                                        new java.lang.Object[] { messageObject });
-
-                                    callback.receiveErrorsaveUser(new java.rmi.RemoteException(
-                                            ex.getMessage(), ex));
-                                } catch (java.lang.ClassCastException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorsaveUser(f);
-                                } catch (java.lang.ClassNotFoundException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorsaveUser(f);
-                                } catch (java.lang.NoSuchMethodException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorsaveUser(f);
-                                } catch (java.lang.reflect.InvocationTargetException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorsaveUser(f);
-                                } catch (java.lang.IllegalAccessException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorsaveUser(f);
-                                } catch (java.lang.InstantiationException e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorsaveUser(f);
-                                } catch (org.apache.axis2.AxisFault e) {
-                                    // we cannot intantiate the class - throw the original Axis fault
-                                    callback.receiveErrorsaveUser(f);
-                                }
-                            } else {
-                                callback.receiveErrorsaveUser(f);
-                            }
-                        } else {
-                            callback.receiveErrorsaveUser(f);
-                        }
-                    } else {
-                        callback.receiveErrorsaveUser(error);
-                    }
-                }
-
-                public void onFault(
-                    org.apache.axis2.context.MessageContext faultContext) {
-                    org.apache.axis2.AxisFault fault = org.apache.axis2.util.Utils.getInboundFaultFromMessageContext(faultContext);
-                    onError(fault);
-                }
-
-                public void onComplete() {
-                    try {
-                        _messageContext.getTransportOut().getSender()
-                                       .cleanup(_messageContext);
-                    } catch (org.apache.axis2.AxisFault axisFault) {
-                        callback.receiveErrorsaveUser(axisFault);
-                    }
-                }
-            });
-
-        org.apache.axis2.util.CallbackReceiver _callbackReceiver = null;
-
-        if ((_operations[5].getMessageReceiver() == null) &&
-                _operationClient.getOptions().isUseSeparateListener()) {
-            _callbackReceiver = new org.apache.axis2.util.CallbackReceiver();
-            _operations[5].setMessageReceiver(_callbackReceiver);
-        }
-
-        //execute the operation client
-        _operationClient.execute(false);
     }
 
     private boolean optimizeContent(javax.xml.namespace.QName opName) {
